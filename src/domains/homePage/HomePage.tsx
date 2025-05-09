@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { Brain, CheckCircle, ChevronRight, Lightbulb, PenTool, Sparkles, Trophy, Users } from "lucide-react"
+import { SiPython, SiNodedotjs, SiReact, SiJavascript } from "react-icons/si";
+import { RxAvatar } from "react-icons/rx";
 
 const HomePage = () => {
     return (
         <main className="">
             {/* Hero Section */}
-            <section className="relative overflow-hidden py-8 px-20">
+            <section className="relative overflow-hidden py-20 px-20 flex flex-col items-center">
                 <div className="container px-4 md:px-6">
                     <div className="flex items-center justify-between gap-22 flex-wrap lg:flex-nowrap">
                         <div className="flex flex-col gap-6">
@@ -41,7 +43,7 @@ const HomePage = () => {
                         <div className="relative">
                             <div className="relative rounded-lg overflow-hidden w-md h-md shadow-lg">
                                 <img
-                                    
+
                                     src="/wmremove-transformed.png"
                                     alt="Quiz Platform Dashboard"
                                 />
@@ -52,6 +54,10 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
+                        <div className="relative w-4 h-8 border-2 border-gray-400 rounded-full animate-bounce mt-10">
+                            <p className="absolute bottom-0 left-[5px] text-xl text-gray-400">.</p>
+                        </div>
+                            <p className="text-sm text-gray-400">Scroll to explore more</p>
             </section>
 
             {/* Features Section */}
@@ -201,82 +207,54 @@ const HomePage = () => {
                     <div className="flex flex-col items-center justify-center gap-4 text-center mb-12">
                         <div className="inline-flex items-center rounded-full border bg-background px-3 py-1 text-sm">
                             <Sparkles className="mr-1 h-3.5 w-3.5 text-primary" />
-                            <span className="text-xs font-medium">Diverse Topics</span>
+                            <span className="text-xs font-medium">Topics</span>
                         </div>
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                            Explore Quiz Categories
+                            Explore Quizzes
                         </h2>
                         <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                            Discover quizzes across a wide range of subjects and topics to expand your knowledge.
+                            Discover quizzes across a wide range of programming languages and topics to expand your knowledge through AI.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {/* Category 1 */}
+                        {/* Python */}
                         <div className="group relative overflow-hidden rounded-lg border bg-background shadow-sm transition-all hover:shadow-md">
-                            <div className="aspect-video w-full overflow-hidden">
-                                <img
-                                    src="/placeholder.svg?height=200&width=400"
-                                    alt="Science Category"
-                                    width={400}
-                                    height={200}
-                                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                                />
+                            <div className="aspect-video w-full overflow-hidden flex items-center justify-center text-6xl text-yellow-500">
+                                <SiPython />
                             </div>
                             <div className="p-4">
-                                <h3 className="text-lg font-bold">Science & Technology</h3>
-                                <p className="text-sm text-muted-foreground">120+ quizzes</p>
+                                <h3 className="text-lg font-bold text-center">Python</h3>
                             </div>
                         </div>
 
-                        {/* Category 2 */}
+                        {/* Node.js */}
                         <div className="group relative overflow-hidden rounded-lg border bg-background shadow-sm transition-all hover:shadow-md">
-                            <div className="aspect-video w-full overflow-hidden">
-                                <img
-                                    src="/placeholder.svg?height=200&width=400"
-                                    alt="History Category"
-                                    width={400}
-                                    height={200}
-                                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                                />
+                            <div className="aspect-video w-full overflow-hidden flex items-center justify-center text-6xl text-green-600">
+                                <SiNodedotjs />
                             </div>
                             <div className="p-4">
-                                <h3 className="text-lg font-bold">History & Culture</h3>
-                                <p className="text-sm text-muted-foreground">95+ quizzes</p>
+                                <h3 className="text-lg font-bold text-center">Node.js</h3>
                             </div>
                         </div>
 
-                        {/* Category 3 */}
-                        <div className="group relative overflow-hidden rounded-lg border bg-background shadow-sm transition-all hover:shadow-md">
-                            <div className="aspect-video w-full overflow-hidden">
-                                <img
-                                    src="/placeholder.svg?height=200&width=400"
-                                    alt="Business Category"
-                                    width={400}
-                                    height={200}
-                                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                                />
+                        {/* Java */}
+                        <div className="group relative overflow-hidden rounded-lg border bg-background transition-all hover:shadow-md">
+                            <div className="aspect-video w-full overflow-hidden flex items-center justify-center text-6xl text-red-600">
+                                <SiJavascript />
                             </div>
                             <div className="p-4">
-                                <h3 className="text-lg font-bold">Business & Finance</h3>
-                                <p className="text-sm text-muted-foreground">80+ quizzes</p>
+                                <h3 className="text-lg font-bold text-center">JavaScript</h3>
                             </div>
                         </div>
 
-                        {/* Category 4 */}
+                        {/* React.js */}
                         <div className="group relative overflow-hidden rounded-lg border bg-background shadow-sm transition-all hover:shadow-md">
-                            <div className="aspect-video w-full overflow-hidden">
-                                <img
-                                    src="/placeholder.svg?height=200&width=400"
-                                    alt="Arts Category"
-                                    width={400}
-                                    height={200}
-                                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                                />
+                            <div className="aspect-video w-full overflow-hidden flex items-center justify-center text-6xl text-cyan-500">
+                                <SiReact />
                             </div>
                             <div className="p-4">
-                                <h3 className="text-lg font-bold">Arts & Literature</h3>
-                                <p className="text-sm text-muted-foreground">75+ quizzes</p>
+                                <h3 className="text-lg font-bold text-center">React.js</h3>
                             </div>
                         </div>
                     </div>
@@ -310,13 +288,14 @@ const HomePage = () => {
                         <div className="rounded-lg border bg-background p-6 shadow-sm">
                             <div className="flex items-start gap-4">
                                 <div className="rounded-full bg-primary/10 p-2">
-                                    <img
+                                    {/* <img
                                         src="/placeholder.svg?height=60&width=60"
                                         alt="User Avatar"
                                         width={60}
                                         height={60}
                                         className="rounded-full"
-                                    />
+                                    /> */}
+                                    <RxAvatar size={44}/>
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-bold">Sarah Johnson</h4>
@@ -332,13 +311,14 @@ const HomePage = () => {
                         <div className="rounded-lg border bg-background p-6 shadow-sm">
                             <div className="flex items-start gap-4">
                                 <div className="rounded-full bg-primary/10 p-2">
-                                    <img
+                                    {/* <img
                                         src="/placeholder.svg?height=60&width=60"
                                         alt="User Avatar"
                                         width={60}
                                         height={60}
                                         className="rounded-full"
-                                    />
+                                    /> */}
+                                    <RxAvatar size={44}/>
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-bold">Michael Chen</h4>
@@ -354,13 +334,14 @@ const HomePage = () => {
                         <div className="rounded-lg border bg-background p-6 shadow-sm">
                             <div className="flex items-start gap-4">
                                 <div className="rounded-full bg-primary/10 p-2">
-                                    <img
+                                    {/* <img
                                         src="/placeholder.svg?height=60&width=60"
                                         alt="User Avatar"
                                         width={60}
                                         height={60}
                                         className="rounded-full"
-                                    />
+                                    /> */}
+                                    <RxAvatar size={44}/>
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-bold">Emily Rodriguez</h4>
@@ -389,13 +370,11 @@ const HomePage = () => {
                             <Button size="lg" variant="default" className="gap-1.5">
                                 Get Started Free <ChevronRight className="h-4 w-4" />
                             </Button>
-                            <Button size="lg" variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                                Watch Demo
-                            </Button>
-                        </div>
+                      </div>
                     </div>
                 </div>
             </section>
+                      <p className="text-center text-gray-500">Created By Abhishek with 💌</p>
         </main>
     )
 }
