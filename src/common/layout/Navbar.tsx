@@ -7,7 +7,7 @@ import { NavBarItems } from "./NavBarItems"
 export const Navbar = () => {
   const { setTheme, theme } = useTheme()
   const navigate = useNavigate();
-  const handleNavigation = (title: string, url: string) => {
+  const handleNavigation = (url: string) => {
     navigate(url);
   };
 
@@ -23,13 +23,13 @@ export const Navbar = () => {
             <div key={index}>
               <NavLink
                 to={item.path}
-                onClick={() => handleNavigation(item.name, item.path)}
+                onClick={() => handleNavigation(item.path)}
                 className={`flex items-center rounded-sm transition-colors duration-200 `}
               >
-                <div className="flex-shrink-0 text-center mr-3">
+                <div className="">
                   {item.icon}
                 </div>
-                <span className="font-semibold whitespace-nowrap">
+                <span className="ml-2 font-semibold whitespace-nowrap">
                   {item.name}
                 </span>
               </NavLink>
@@ -39,10 +39,10 @@ export const Navbar = () => {
           }
         </nav>
         <div className="flex items-center gap-4">
-          <Button variant="outline" size="sm" className="hidden md:flex">
+          <Button variant="outline" size="sm" className="hidden md:flex" onClick={() => navigate('/auth', { state: { type: "login" } })}>
             Log In
           </Button>
-          <Button size="sm" className="bg-orange-500">Sign Up Free</Button>
+          <Button size="sm" className="bg-orange-500" onClick={() => navigate('/auth', { state: { type: "signup" } })}>Sign Up Free</Button>
           {
             theme === "light" ? <Button variant={"ghost"} onClick={() => setTheme("dark")}>
               <Moon

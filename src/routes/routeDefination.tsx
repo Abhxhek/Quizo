@@ -1,4 +1,4 @@
-import HomePage from "@/domains/homePage/HomePage";
+import { Topics } from "@/domains/Topics/Topics";
 import type { ReactNode } from "react";
 
 interface RouteDefination {
@@ -7,7 +7,6 @@ interface RouteDefination {
 }
 
 export const routeDefination: RouteDefination[] = [
-    { path: "/", element: <HomePage /> },
-
+    { path: "/topics", element: <Topics /> },
 ]
 
