@@ -8,9 +8,9 @@ import Auth from "./domains/auth/Auth";
 
 const ProtectedRoutes = ({ element }: any) => {
   const token = Cookies.get("authToken")
-  if (!token) {
-    return <Navigate to={"/auth"} replace />;
-  }
+  // if (!token) {
+  //   return <Navigate to={"/auth"} replace />;
+  // }
 
   return element;
 }

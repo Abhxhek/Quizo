@@ -1,4 +1,5 @@
-import { Topics } from "@/domains/Topics/Topics";
+
+import Topics from "@/domains/Topics/Topics";
 import type { ReactNode } from "react";
 
 interface RouteDefination {
