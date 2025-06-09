@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useNavigate } from "react-router"
+import { Navigate, Route, Routes } from "react-router"
 import { routeDefination } from "./routes/routeDefination";
 import { Layout } from "./common/layout/Layout";
 import Cookies from "js-cookie";
@@ -8,9 +8,9 @@ import Auth from "./domains/auth/Auth";
 
 const ProtectedRoutes = ({ element }: any) => {
   const token = Cookies.get("authToken")
-  // if (!token) {
-  //   return <Navigate to={"/auth"} replace />;
-  // }
+  if (!token) {
+    return <Navigate to={"/auth"} replace />;
+  }
 
   return element;
 }
