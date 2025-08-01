@@ -9,8 +9,11 @@ interface FormData {
     password: string,
     username: string,
 }
+interface signupProp {
+   onSignup: (formData: FormData) => void
+}
 
-const Signup = () => {
+const Signup = ({onSignup}: signupProp) => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState<FormData>({
@@ -99,7 +102,7 @@ const Signup = () => {
                                     className="py-6 "
                                 />
                             </div>
-                            <Button className="w-full bg-blue-600 py-6 text-white hover:bg-blue-700">Sign up</Button>
+                            <Button className="w-full bg-blue-600 py-6 text-white hover:bg-blue-700" onClick={() => onSignup(formData)}>Sign up</Button>
                             <div className="flex justify-between">
                                 <div className="lg:hidden">
                                     <img src="/vite.svg" alt="Logo" width={32} height={32} className="h-8 w-8" />

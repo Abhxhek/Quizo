@@ -5,11 +5,11 @@ interface RequestParams {
     [key: string]: string | number | boolean;
 }
 
-export const BASE_URL = "";
+export const BASE_URL = "http://localhost:3000/api";
 
 export const logout = () => {
     Cookies.remove("authToken")
-    window.location.href = '/login'
+    window.location.href = '/auth'
 }
 
 export const getAuthToken = () => {
@@ -25,16 +25,19 @@ const handleAuthError = (error: AxiosError) => {
 export const postData = async <T,>(
     endpoint: string,
     data?: T,
-    params: RequestParams = {}
+    params: RequestParams = {},
+    requiresAuth: boolean = true
 ) => {
     try {
         const headers: Record<string, string> = {};
 
-        const token = getAuthToken();
-        if (!token) {
-            throw new Error("Authentication required");
+        if (requiresAuth) {
+            const token = getAuthToken();
+            if (!token) {
+                throw new Error("Authentication required");
+            }
+            headers.Authorization = `Bearer ${token}`;
         }
-        headers.Authorization = `Bearer ${token}`;
 
         const response = await axios.post(
             `${BASE_URL}/${endpoint}`,

@@ -7,6 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 // Assumed custom multiselect component
 import { motion } from "framer-motion";
 import { MultiSelect } from "./components/MultiSelect";
+import { BowArrow } from "lucide-react";
+
 
 const data = [
   { id: 1, category: "Programming Language", name: "JavaScript", level: "Intermediate", type: "Interpreted" },
@@ -80,7 +82,7 @@ export default function Topics() {
                 <Badge variant="outline" className="mt-2">{topic.level}</Badge>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full ">start</Button>
+                <Button variant="outline" className="w-full flex items-center group">Fire<span><BowArrow className="group-hover:translate-x-1 duration-200 transition-all" /></span></Button>
               </CardFooter>
             </Card>
           </motion.div>

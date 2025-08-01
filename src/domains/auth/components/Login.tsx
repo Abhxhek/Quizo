@@ -9,7 +9,11 @@ interface FormData {
     password: string,
 }
 
-export const Login = () => {
+interface loginProp {
+    onLogin: (formData: FormData) => void
+}
+
+export const Login = ({ onLogin }: loginProp) => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState<FormData>({
         email: "",
@@ -78,7 +82,9 @@ export const Login = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <Button className="w-full bg-blue-600 py-6 text-white hover:bg-blue-700">Sign In</Button>
+                            <Button className="w-full bg-blue-600 py-6 text-white hover:bg-blue-700" onClick={() => {
+                                onLogin(formData)
+                            }}>Sign In</Button>
                             <div className="flex justify-between">
                                 <div className="lg:hidden">
                                     <img src="/logo.png" alt="Logo" width={32} height={32} className="h-8 w-8" />
