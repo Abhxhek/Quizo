@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { useLocation, useParams, useNavigate } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/services/apiServices";
 
 // --- Shadcn UI & Icon Imports ---
-import { Button } from "@/components/ui/button";
-import {  ArrowLeft} from 'lucide-react';
 import { QuizResult } from '../common/QuizResult';
 import { QuizSkeleton } from '../common/QuizSkeleton';
 import { QuizForm } from '../common/QuizForm';
@@ -20,7 +18,6 @@ import { QuizForm } from '../common/QuizForm';
 
 // --- Main Parent Component: Attempt ---
 export default function Attempt() {
-  const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams();
   const quizId = id || location?.state?.quizId;
@@ -28,7 +25,7 @@ export default function Attempt() {
   const [isFinished, setIsFinished] = useState(false);
   const [score, setScore] = useState(0);
 
-  const { data: getQuizById, isLoading, isError } = useQuery({
+  const { data: getQuizById, isLoading } = useQuery({
     queryKey: ["getQuizById", quizId],
     queryFn: async () => getData(`quiz/getQuizById/${quizId}`)
   });
