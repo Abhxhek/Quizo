@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { BrowserRouter } from "react-router";
-import { ThemeProvider } from './common/utils/theme-provider.tsx';
+import { ThemeProvider } from './common/components/theme-provider.tsx';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { Toaster } from '@/components/ui/sonner.tsx';
 

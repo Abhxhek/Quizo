@@ -2,12 +2,15 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 // Assumed custom multiselect component
 import { motion } from "framer-motion";
 import { MultiSelect } from "./components/MultiSelect";
 import { BowArrow } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { postData } from "@/services/apiServices";
+import { toast } from "sonner";
+import { useNavigate } from "react-router";
 
 
 const data = [
@@ -31,12 +34,34 @@ export default function Topics() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedLevel, setSelectedLevel] = useState("");
 
+  const navigate = useNavigate()
+
   const filtered = data.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase());
     const matchesCategory = selectedCategories.length ? selectedCategories.includes(item.category) : true;
     const matchesLevel = selectedLevel ? item.level === selectedLevel : true;
     return matchesSearch && matchesCategory && matchesLevel;
   });
+
+  const { mutateAsync: mutateGenerateQuiz } = useMutation({
+    mutationKey: ["mutateGenerateQuiz"],
+    mutationFn: async (topic: string) => postData(`quiz/createQuiz?topic=${topic}`),
+    onSuccess: () => {
+      toast.dismiss("gen-quiz")
+      toast.success("Quiz generated successfuly")
+      navigate("/quizes")
+    },
+    onError:() =>{
+      toast.dismiss("gen-quiz")
+      toast.error("Failed to generate quiz. please try again")
+    }
+  })
+
+  const handleGenerateQuiz = (topic: string) =>{
+    toast.loading(`Generating quiz for ${topic}`,{id: "gen-quiz"})
+    mutateGenerateQuiz(topic)
+  }
+
 
   return (
     <div className="py-6 px-12 space-y-6 w-full">
@@ -79,10 +104,12 @@ export default function Topics() {
                 <div className="text-lg font-semibold">{topic.name}</div>
                 <div className="text-sm text-muted-foreground">{topic.category}</div>
                 <div className="text-sm">Type: {topic.type}</div>
-                <Badge variant="outline" className="mt-2">{topic.level}</Badge>
+                {/* <Badge variant="outline" className="mt-2">{topic.level}</Badge> */}
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full flex items-center group">Fire<span><BowArrow className="group-hover:translate-x-1 duration-200 transition-all" /></span></Button>
+                <Button onClick={()=>{
+                  handleGenerateQuiz(topic.name)
+                }} variant="outline" className="w-full flex items-center group">Generate Quiz<span><BowArrow className="group-hover:translate-x-1 duration-200 transition-all" /></span></Button>
               </CardFooter>
             </Card>
           </motion.div>

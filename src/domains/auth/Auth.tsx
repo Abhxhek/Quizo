@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -20,6 +20,8 @@ const Auth = () => {
     // Default to "login" if no state is passed
     const type = location?.state?.type || "login";
     const setUser = useUserStore((state) => state.setUser)
+    
+    const navigate = useNavigate();
 
     /**
      * Mutation for handling user login.
@@ -31,6 +33,7 @@ const Auth = () => {
         onSuccess: (res) => {
             Cookies.set("authToken", res?.data?.token)
             setUser(res?.data?.user)
+            navigate("/topics")
             // Show a success message on successful login
             toast.success("Login successful! Welcome back.");
             // Here you would typically handle routing or updating global auth state

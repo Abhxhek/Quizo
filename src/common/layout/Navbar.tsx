@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Brain, Moon, Sun } from "lucide-react"
-import { useTheme } from "../utils/theme-provider"
+import { useTheme } from "../components/theme-provider"
 import { NavLink, useNavigate } from "react-router"
 import { NavBarItems } from "./NavBarItems"
 import { useUserStore } from "@/store/useUserStore"
