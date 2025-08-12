@@ -5,7 +5,7 @@ interface RequestParams {
     [key: string]: string | number | boolean;
 }
 
-export const BASE_URL = "http://localhost:3000/api";
+export const BASE_URL = "https://quizobackend.onrender.com/api";
 
 export const logout = () => {
     Cookies.remove("authToken")
@@ -78,4 +78,5 @@ export const getData = async (endpoint: string, params: RequestParams = {}) => {
         }
         throw error;
     }
+
 };
